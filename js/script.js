@@ -6,8 +6,6 @@ function getComputerChoice() {
     // limit math.random up to 3 for its choice
     let computerChoice = Math.floor(Math.random() * 3);
 
-    console.log(computerChoice);
-
     if(computerChoice === 0) {
         return computerChoice = "Rock";
     } else if(computerChoice === 1) {
