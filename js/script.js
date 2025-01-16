@@ -23,7 +23,7 @@ function getPlayerChoice() {
     // get player choice 
     let playerChoice = parseInt(prompt("Input number to play: 1 = rock,  2 = paper,  3 = scissors: "));
 
-    // verify player selection if it is valid, if not invalidate round
+    // verify player selection if it is valid
     while( !((playerChoice === 1) || (playerChoice === 2) || (playerChoice === 3)) ) {
         playerChoice = parseInt(prompt("Invalid selection. Input number to play: 1 = rock,  2 = paper,  3 = scissors: "));
     }
