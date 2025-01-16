@@ -1,47 +1,42 @@
+
+let computerScore = 0;
+let playerScore = 0;
+
 function getComputerChoice() {
+    // limit math.random up to 3 for its choice
     let computerChoice = Math.floor(Math.random() * 3);
+
     if(computerChoice === 0) {
-        // console.log("Rock");
         return computerChoice = "Rock";
     } else if(computerChoice === 1) {
-        // console.log("Paper");
         return computerChoice = "Paper";
     } else if(computerChoice === 2) {
-        // console.log("Scissors");
         return computerChoice = "Scissors";
     }
+
 }
 
-// console.log(`Computer choice: ${getComputerChoice()}`);
 
 function getPlayerChoice() {
+    // get player choice 
     let playerChoice = parseInt(prompt("Input number to play: 0=rock, 1=paper, 2=scissors: "));
+
     if(playerChoice === 0) {
-        // console.log("Rock");
         return playerChoice = "Rock";
     } else if(playerChoice === 1) {
-        // console.log("Paper");
         return playerChoice = "Paper";
     } else if(playerChoice === 2) {
-        console.log("Scissors");
-        // return playerChoice = "Scissors";
+        return playerChoice = "Scissors";
     } else {
-        // console.log("Invalid choice.");
         return playerChoice = "Invalid";
     }
+
 }
-
-// console.log(`Player choice: ${getPlayerChoice()}`);
-
-
 
 
 function playRound(playerChoice, computerChoice) {
-    let computerScore = 0;
-    let playerScore = 0;
 
-    console.log(`Computer Choice: ${computerChoice}`);
-    console.log(`Player Choice: ${playerChoice}`);
+    console.log(`Computer Choice: ${computerChoice}  |  Player Choice: ${playerChoice}`);
 
     if(playerChoice == "Invalid") {
         console.log("Invalid");
@@ -59,11 +54,22 @@ function playRound(playerChoice, computerChoice) {
         console.log("Draw");
     }
 
-    console.log(`Computer Score: ${computerScore}`);
-    console.log(`Player Score: ${playerScore}`);
+    console.log(`Computer Score: ${computerScore}  |  Player Score: ${playerScore}`);
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = getPlayerChoice();
 
-playRound(playerSelection, computerSelection);
+function playGame() {
+
+    for(r = 1; r <= 5; r++) {
+        console.log(`Round: ${r}`);
+        
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerChoice();
+
+        playRound(playerSelection, computerSelection);
+        console.log("------------------------")
+    }
+}
+
+playGame();
+
