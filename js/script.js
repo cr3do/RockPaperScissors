@@ -27,7 +27,7 @@ function getPlayerChoice() {
         return playerChoice = "Scissors";
     } else {
         console.log("Invalid choice.");
-        return playerChoice = "Invalid choice.";
+        return playerChoice = "Invalid";
     }
 }
 
@@ -36,18 +36,30 @@ function getPlayerChoice() {
 
 
 
-function playRound() {
-    let computerChoice = getComputerChoice();
-    let playerChoice = getPlayerChoice();
+function playRound(playerChoice, computerChoice) {
+    let computerScore = 0;
+    let playerScore = 0;
 
-    if(computerChoice == "Rock" && playerChoice == "Scissors" || computerChoice == "Paper" && playerChoice == "Rock" || computerChoice == "Scissors" && playerChoice == "Paper") {
+    if(playerChoice == "Invalid") {
+        console.log("Invalid");
+    }
+    else if(computerChoice == "Rock" && playerChoice == "Scissors" || computerChoice == "Paper" && playerChoice == "Rock" || computerChoice == "Scissors" && playerChoice == "Paper") {
         console.log("Computer wins");
+        computerScore++;
     } 
     else if(playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") {
         console.log("Player wins");
+        playerScore++;
     } else {
         console.log("Draw");
     }
+
+    console.log(`Computer Score: ${computerScore}`);
+    console.log(`Player Score: ${playerScore}`);
 }
 
-playRound();
+
+let computerSelection = getComputerChoice();
+let playerSelection = getPlayerChoice();
+
+playRound(playerSelection, computerSelection);
