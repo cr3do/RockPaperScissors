@@ -6,6 +6,8 @@ function getComputerChoice() {
     // limit math.random up to 3 for its choice
     let computerChoice = Math.floor(Math.random() * 3);
 
+    console.log(computerChoice);
+
     if(computerChoice === 0) {
         return computerChoice = "Rock";
     } else if(computerChoice === 1) {
@@ -19,13 +21,18 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     // get player choice 
-    let playerChoice = parseInt(prompt("Input number to play: 0=rock, 1=paper, 2=scissors: "));
+    let playerChoice = parseInt(prompt("Input number to play: 1 = rock,  2 = paper,  3 = scissors: "));
 
-    if(playerChoice === 0) {
+    // verify player selection if it is valid, if not invalidate round
+    while( !((playerChoice === 1) || (playerChoice === 2) || (playerChoice === 3)) ) {
+        playerChoice = parseInt(prompt("Invalid selection. Input number to play: 1 = rock,  2 = paper,  3 = scissors: "));
+    }
+
+    if(playerChoice === 1) {
         return playerChoice = "Rock";
-    } else if(playerChoice === 1) {
-        return playerChoice = "Paper";
     } else if(playerChoice === 2) {
+        return playerChoice = "Paper";
+    } else if(playerChoice === 3) {
         return playerChoice = "Scissors";
     } else {
         return playerChoice = "Invalid";
@@ -42,13 +49,11 @@ function playRound(playerChoice, computerChoice) {
         console.log("Invalid");
     }
     else if(computerChoice == "Rock" && playerChoice == "Scissors" || computerChoice == "Paper" && playerChoice == "Rock" || computerChoice == "Scissors" && playerChoice == "Paper") {
-        console.log(`${computerChoice} beats ${playerChoice}`);
-        console.log("Computer wins");
+        console.log(`Computer wins! ${computerChoice} beats ${playerChoice}`);
         computerScore++;
     } 
     else if(playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") {
-        console.log(`${playerChoice} beats ${computerChoice}`);
-        console.log("Player wins");
+        console.log(`Player wins! ${playerChoice} beats ${computerChoice}`);
         playerScore++;
     } else {
         console.log("Draw");
@@ -63,11 +68,11 @@ function playGame() {
     for(r = 1; r <= 5; r++) {
         console.log(`Round: ${r}`);
         
-        let computerSelection = getComputerChoice();
         let playerSelection = getPlayerChoice();
-
+        let computerSelection = getComputerChoice();
+            
         playRound(playerSelection, computerSelection);
-        console.log("------------------------")
+        console.log("------------------------");
     }
 }
 
