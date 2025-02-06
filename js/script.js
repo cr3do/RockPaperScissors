@@ -24,6 +24,10 @@ btnPaper.addEventListener("click", playGame);
 btnScissors.addEventListener("click", playGame);
 
 const resultList = document.getElementById("resultList");
+const computerScoreBoard = document.getElementById("computerScore");
+const computerSelectionBoard = document.getElementById("computerSelection");
+const playerScoreBoard = document.getElementById("playerScore");
+const playerSelectionBoard = document.getElementById("playerSelection");
 
 
 function playRound(playerChoice, computerChoice) {
@@ -35,27 +39,45 @@ function playRound(playerChoice, computerChoice) {
     }
     else if(computerChoice == "Rock" && playerChoice == "Scissors" || computerChoice == "Paper" && playerChoice == "Rock" || computerChoice == "Scissors" && playerChoice == "Paper") {
         console.log(`Computer wins! ${computerChoice} beats ${playerChoice}`);
+
+        // add then display score
         computerScore++;
+        computerScoreBoard.textContent = computerScore;
+
+        // display computer and player selection
+        computerSelectionBoard.textContent = computerChoice;
+        playerSelectionBoard.textContent = playerChoice;
         
+        // create new list tag then add result message in top/reverse order using prepend
         const resultMessage = document.createElement("li");
         resultList.prepend(resultMessage);
-
         resultMessage.textContent = `Computer wins! ${computerChoice} beats ${playerChoice}`;
     } 
     else if(playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") {
         console.log(`Player wins! ${playerChoice} beats ${computerChoice}`);
-        playerScore++;
 
+        // add then display score
+        playerScore++;
+        playerScoreBoard.textContent = playerScore;
+
+        // display computer and player selection
+        computerSelectionBoard.textContent = computerChoice;
+        playerSelectionBoard.textContent = playerChoice;
+
+        // create new list tag then add result message in top/reverse order using prepend
         const resultMessage = document.createElement("li");
         resultList.prepend(resultMessage);
-
         resultMessage.textContent = `Player wins! ${playerChoice} beats ${computerChoice}`;
     } else {
         console.log("Draw");
 
+        // display computer and player selection
+        computerSelectionBoard.textContent = computerChoice;
+        playerSelectionBoard.textContent = playerChoice;
+
+        // create new list tag then add result message in top/reverse order using prepend
         const resultMessage = document.createElement("li");
         resultList.prepend(resultMessage);
-
         resultMessage.textContent = "Draw";
     }
 
