@@ -4,37 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Rock, Paper Scissors</h1> 
 
-    <div id="scoreBoard">
-        <div id="computerBoard">
-            <h3>Computer:</h3>
-            <div id="computerSelection">
-            
-            </div>
-            <div id="computerScore">0</div>
-        </div>
+    <div id="container">
+
+        <div id="content">
+            <h1>Rock, Paper Scissors</h1> 
+
+            <div id="scoreBoard">
+                <div id="computerBoard">
+                    <h3>Computer:</h3>
+                    <div id="computerSelection">
+                        <img id="imgComputerSelection" src="images/rock-paper-scissors.png" alt="">
+                    </div>
+                    <div id="computerScore">0</div>
+                </div>
+                
+                <div id="playerBoard">
+                    <h3>Player:</h3>
+                    <div id="playerSelection">
+                        <img id="imgPlayerSelection" src="images/rock-paper-scissors.png" alt="">
+                    </div>
+                    <div id="playerScore">0</div>
+                </div>
         
-        <div id="playerBoard">
-            <h3>Player:</h3>
-            <div id="playerSelection">
-
             </div>
-            <div id="playerScore">0</div>
+        
+            <div id="selectionContainer">
+                <button id="btnRock" class="btnRPS"><img src="images/rocks.png" alt=""></button>
+                <button id="btnPaper" class="btnRPS"><img src="images/paper.png" alt=""></button>
+                <button id="btnScissors" class="btnRPS"><img src="images/scissors.png" alt=""></button>
+            </div>
+        
+            <div id="resultBoard">
+                <ul id="resultList">
+        
+                </ul>
+            </div>
         </div>
 
-    </div>
-
-    <button id="btnRock" class="btnRPS">Rock</button>
-    <button id="btnPaper" class="btnRPS">Paper</button>
-    <button id="btnScissors" class="btnRPS">Scissors</button>
-
-    <div id="resultBoard">
-        <ul id="resultList">
-
-        </ul>
     </div>
 
     <script src="js/script.js"></script>
