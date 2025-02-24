@@ -1,6 +1,8 @@
 
 let computerScore = 0;
 let playerScore = 0;
+let round = 0;
+
 
 function getComputerChoice() {
     // limit math.random up to 3 for its choice
@@ -34,9 +36,11 @@ const imgPlayerSelection = document.getElementById("imgPlayerSelection");
 
 function playRound(playerChoice, computerChoice) {
 
+    round++;
+
     console.log(`Computer Choice: ${computerChoice}  |  Player Choice: ${playerChoice}`);
 
-    // display computer selection
+    // display computer selection in html
     if(computerChoice == "Rock") {
         imgComputerSelection.src = "images/rocks.png";
         computerSelectionBoard.appendChild(imgComputerSelection);
@@ -48,7 +52,7 @@ function playRound(playerChoice, computerChoice) {
         computerSelectionBoard.appendChild(imgComputerSelection);
     }
 
-    // display player selection
+    // display player selection in html
     if(playerChoice == "Rock") {
         imgPlayerSelection.src = "images/rocks.png";
         playerSelectionBoard.appendChild(imgPlayerSelection);
@@ -78,7 +82,7 @@ function playRound(playerChoice, computerChoice) {
         const resultMessage = document.createElement("li");
         resultMessage.setAttribute("class", "red");
         resultList.prepend(resultMessage);
-        resultMessage.textContent = `Computer wins! ${computerChoice} beats ${playerChoice}`;
+        resultMessage.textContent = `Round: ${round}. Computer wins! ${computerChoice} beats ${playerChoice}`;
     } 
     else if(playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") {
         console.log(`Player wins! ${playerChoice} beats ${computerChoice}`);
@@ -95,7 +99,7 @@ function playRound(playerChoice, computerChoice) {
         const resultMessage = document.createElement("li");
         resultMessage.setAttribute("class", "green");
         resultList.prepend(resultMessage);
-        resultMessage.textContent = `Player wins! ${playerChoice} beats ${computerChoice}`;
+        resultMessage.textContent = `Round: ${round}. Player wins! ${playerChoice} beats ${computerChoice}`;
     } else {
         console.log("Draw");
 
@@ -106,7 +110,7 @@ function playRound(playerChoice, computerChoice) {
         // create new list tag then add result message in top/reverse order using prepend
         const resultMessage = document.createElement("li");
         resultList.prepend(resultMessage);
-        resultMessage.textContent = "Draw";
+        resultMessage.textContent = `Round: ${round}. Draw`;
     }
 
     console.log(`Computer Score: ${computerScore}  |  Player Score: ${playerScore}`);
@@ -123,11 +127,32 @@ function playGame() {
     } else if (this.id == "btnScissors") {
         playerSelection = "Scissors";
     }
-
     
     let computerSelection = getComputerChoice();
             
     playRound(playerSelection, computerSelection);
+
+    if(computerScore == 5 || playerScore == 5) {
+
+        const resultMessage = document.createElement("li");
+        resultList.prepend(resultMessage);
+        
+        if(computerScore == 5) {            
+            resultMessage.setAttribute("class", "lose");
+            resultMessage.textContent = `You lost the game!`;
+        } else if (playerScore == 5) {
+            resultMessage.setAttribute("class", "win");
+            resultMessage.textContent = `You won the game!`;
+        }
+
+        computerScore = 0;
+        playerScore = 0;
+        round = 0;
+
+        playerScoreBoard.textContent = playerScore;
+        computerScoreBoard.textContent = computerScore;
+
+    } 
 }
 
 // playGame();
